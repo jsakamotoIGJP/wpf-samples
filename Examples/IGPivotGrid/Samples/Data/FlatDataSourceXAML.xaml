@@ -10,6 +10,7 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igOlap="http://schemas.infragistics.com/olap"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPivotGrid.Resources"
       xmlns:tools="clr-namespace:Infragistics.Samples.Shared.Tools;assembly=Infragistics.Samples.Shared">
 
@@ -20,7 +21,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
 
-            <res:PivotGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PivotGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

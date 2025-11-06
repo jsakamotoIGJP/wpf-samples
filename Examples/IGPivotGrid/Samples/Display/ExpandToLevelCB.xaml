@@ -7,6 +7,7 @@
     xmlns:igOlap="http://schemas.infragistics.com/olap"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:local="clr-namespace:IGPivotGrid.Samples.Controls"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGPivotGrid.Resources"
     xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -20,7 +21,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
             <local:SampleFlatDataSourceDateVsProduct x:Key="FlatDataSource" IsExpanded="False" />
-            <res:PivotGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PivotGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

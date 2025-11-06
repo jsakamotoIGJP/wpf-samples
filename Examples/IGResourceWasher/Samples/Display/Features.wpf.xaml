@@ -10,6 +10,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igDP="http://infragistics.com/DataPresenter"
       xmlns:igThemes="http://infragistics.com/Themes"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGResourceWasher.Resources">
 
     <Page.Resources>
@@ -17,7 +18,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGResourceWasher;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:ResourceWasherStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:ResourceWasherStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </Page.Resources>
 

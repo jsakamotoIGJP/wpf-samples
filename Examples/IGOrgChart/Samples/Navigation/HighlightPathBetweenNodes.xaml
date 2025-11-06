@@ -6,6 +6,7 @@
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGOrgChart.Resources"
     xmlns:model="clr-namespace:IGOrgChart.Model"
     xmlns:converters="clr-namespace:IGOrgChart.Converters"
@@ -20,7 +21,12 @@
             </ResourceDictionary.MergedDictionaries>
             
             <converters:NodeDepartmentDataToDescriptionConverter x:Key="NodeDepartmentDataToDescriptionConverter" />
-            <res:OrgChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OrgChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style x:Key="DragBorder" TargetType="Border">
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="BorderBrush" Value="{StaticResource PopupBorderBrush}" />

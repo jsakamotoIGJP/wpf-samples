@@ -10,6 +10,7 @@
       xmlns:converters="clr-namespace:Infragistics.Samples.Shared.Converters;assembly=Infragistics.Samples.Shared"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGCalendar.Resources">
 
     <framework:SampleContainer.Resources>
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGCalendar;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converters:VisibilityConverter x:Key="boolToVisibilityConverter"/>
-            <res:CalendarStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:CalendarStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style x:Key="dateCellStyle" TargetType="DataGridCell">
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>

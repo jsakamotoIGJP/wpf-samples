@@ -8,6 +8,7 @@
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
     xmlns:local="clr-namespace:IGDoughnutChart.Samples"
     xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGDoughnutChart.Resources"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="700"
@@ -19,7 +20,12 @@
                 <ResourceDictionary Source="/IGDoughnutChart;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <models:FinancialDataCollection x:Key="financialData"/>
-            <res:DoughnutChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DoughnutChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <local:LabelsPositionToBoolConverter x:Key="LabelsPositionToBoolConverter"/>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

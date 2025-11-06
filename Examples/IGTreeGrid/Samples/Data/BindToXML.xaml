@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:igDP="http://infragistics.com/DataPresenter"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGTreeGrid.Resources"
     xmlns:vm="clr-namespace:IGTreeGrid.Samples.ViewModels"
     mc:Ignorable="d" 
@@ -16,7 +17,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGTreeGrid;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <res:TreeGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:TreeGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

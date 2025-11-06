@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:res="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared"
              xmlns:resCombo="clr-namespace:IGMultiColumnComboEditor.Resources"
              xmlns:local="clr-namespace:IGMultiColumnComboEditor.Samples.Editing"
@@ -19,7 +20,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
 
-            <res:CommonStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:CommonStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <resCombo:MultiColumnComboEditorStrings x:Key="ComboStrings" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:res="clr-namespace:IGMultiColumnComboEditor.Resources"
              xmlns:data="clr-namespace:IGMultiColumnComboEditor.Samples.Data"
              xmlns:ig="http://schemas.infragistics.com/xaml"
@@ -18,7 +19,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
 
-            <res:MultiColumnComboEditorStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:MultiColumnComboEditorStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

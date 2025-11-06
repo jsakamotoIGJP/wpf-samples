@@ -6,6 +6,7 @@
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
     xmlns:conv="clr-namespace:IGPropertyGrid.Converters"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGPropertyGrid.Resources"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:IGPropertyGrid.Samples.Editing"
@@ -22,7 +23,12 @@
             </ResourceDictionary.MergedDictionaries>
 
             <conv:IntegerToDoubleConverter x:Key="IntDoubleConv" />
-            <res:PropertyGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PropertyGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <!-- #BEGIN SNIPPET# -->
             <DataTemplate x:Key="SpinIntEditor">

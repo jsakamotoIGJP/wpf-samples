@@ -10,6 +10,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igEdit="http://infragistics.com/Editors"
       xmlns:local="clr-namespace:IGCalculationManager.Converters"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGCalculationManager.Resources">
 
     <framework:SampleContainer.Resources>
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGCalculationManager;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <local:StringToIntConverter x:Key="stringToIntConverter"/>
-            <res:CalculationManagerStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:CalculationManagerStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

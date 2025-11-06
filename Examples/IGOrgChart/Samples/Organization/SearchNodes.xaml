@@ -7,6 +7,7 @@
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGOrgChart.Resources"
     xmlns:converters="clr-namespace:IGOrgChart.Converters"
     xmlns:model="clr-namespace:IGOrgChart.Model"
@@ -25,7 +26,12 @@
             </ResourceDictionary.MergedDictionaries> 
             
             <converters:NodeDepartmentDataToDescriptionConverter x:Key="NodeDepartmentDataToDescriptionConverter" />
-            <res:OrgChartStrings x:Key="Strings" />            
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OrgChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>            
         
             <!--The style of the highlighted nodes-->
             <Style x:Key="HighlightedStyle" TargetType="ig:OrgChartNodeControl" BasedOn="{StaticResource OrgChartNodeControlStyle}">

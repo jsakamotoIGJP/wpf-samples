@@ -7,10 +7,16 @@
       d:DesignHeight="500" d:DesignWidth="700"
       
       Loaded="SyncCheckBoxes_Loaded"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDockManager.Resources">
 
     <UserControl.Resources>
-        <res:DockManagerStrings x:Key="Strings" />
+        <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="res:DockManagerStrings" />
+                <System:Boolean>True</System:Boolean>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
 
         <SolidColorBrush x:Key="DockManagerBrush1" Color="#FF7446B9" />
         <SolidColorBrush x:Key="DockManagerBrush2" Color="White" />

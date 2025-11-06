@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGTabControl.Resources"
     xmlns:igWindows="http://infragistics.com/Windows"
     mc:Ignorable="d" 
@@ -13,7 +14,12 @@
 
     <igFramework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:TabControlStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:TabControlStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGTabControl;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -19,7 +19,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGOutlookBar;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <res:OutlookBarStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OutlookBarStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             
             <ObjectDataProvider MethodName="GetThemes" 
                                 ObjectType="{x:Type igThemes:ThemeManager}" x:Key="ThemeNames">

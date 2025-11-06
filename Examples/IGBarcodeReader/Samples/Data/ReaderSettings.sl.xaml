@@ -10,6 +10,7 @@
       xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:local="clr-namespace:IGBarcodeReader.Controls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGBarcodeReader.Resources">
 
     <framework:SampleContainer.Resources>
@@ -17,7 +18,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGBarcodeReader;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <res:BarcodeReaderStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BarcodeReaderStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style TargetType="TextBlock">
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>

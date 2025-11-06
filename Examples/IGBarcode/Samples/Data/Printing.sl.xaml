@@ -8,6 +8,7 @@
       Title="Printing"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:ig="http://schemas.infragistics.com/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGBarcode.Resources">
 
     <framework:SampleContainer.Resources>
@@ -17,7 +18,12 @@
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamBarcode.xaml" />
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamGrid.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:BarcodeStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BarcodeStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <!--#BEGIN SNIPPET#-->
             <!--######################################-->
             <!--A Data Template for the rows of the printed grid-->

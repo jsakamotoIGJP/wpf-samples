@@ -8,6 +8,7 @@
       xmlns:converters="clr-namespace:Infragistics.Samples.Shared.Converters;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGTimeline.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -15,7 +16,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGTimeline;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:TimelineStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:TimelineStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <converters:GetImagePathConverter x:Key="GetImageConverter" />
 
             <Style x:Key="TimelineStyle" TargetType="ig:XamTimeline">

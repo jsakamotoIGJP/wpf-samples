@@ -9,6 +9,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDockManager.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -17,7 +18,12 @@
                 <ResourceDictionary Source="/IGDockManager;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <res:DockManagerStrings x:Key="Strings" />
+        <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="res:DockManagerStrings" />
+                <System:Boolean>True</System:Boolean>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <!--#BEGIN SNIPPET#-->
         <Style x:Key="StylePreviewIndicatorStyle" TargetType="igPrim:PreviewIndicator">
             <Setter Property="Background" Value="#66DE5E5E"/>

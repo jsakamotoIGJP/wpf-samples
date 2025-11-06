@@ -10,6 +10,7 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:local="clr-namespace:IGBarcode.Samples.Data"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGBarcode.Resources">
 
     <framework:SampleContainer.Resources>
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGBarcode;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:BarcodeStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BarcodeStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <local:BarcodeDataModel x:Key="BarcodeDataModel" PropertyChanged="BarcodeDataModel_PropertyChanged" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

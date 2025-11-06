@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGDataGrid.Resources"
     xmlns:igDP="http://infragistics.com/DataPresenter"
     xmlns:vm="clr-namespace:IGDataGrid.Samples.ViewModel"
@@ -16,7 +17,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDataGrid;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DataGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

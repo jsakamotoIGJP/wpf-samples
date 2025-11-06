@@ -11,6 +11,7 @@
            
            xmlns:models="clr-namespace:IGDataChart.Model.Common"
            xmlns:dataChartModels="clr-namespace:IGDataChart.Model.DataChart"
+           xmlns:System="clr-namespace:System;assembly=mscorlib"
            xmlns:res="clr-namespace:IGDataChart.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -20,7 +21,12 @@
                 <!-- this loads IG styles for MS controls -->
                 <ResourceDictionary Source="/IGDataChart;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DataChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <dataChartModels:StackableDataCollection x:Key="stackedData" />
         </ResourceDictionary>
     </igFramework:SampleContainer.Resources>

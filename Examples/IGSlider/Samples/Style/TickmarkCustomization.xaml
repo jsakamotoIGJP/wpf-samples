@@ -17,7 +17,12 @@
                 <ResourceDictionary Source="/IGSlider;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>            
-            <res:SliderStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SliderStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 <LinearGradientBrush x:Key="TrackFillBackground" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="#FF3AB5E9" />
         <GradientStop Color="#FF2380A8" Offset="1" />

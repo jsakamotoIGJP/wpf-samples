@@ -8,11 +8,17 @@
       Title="CustomTabs"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:igWindows="http://infragistics.com/Windows"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGTabControl.Resources">
 
     <igFramework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:TabControlStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:TabControlStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style x:Key="TabButton"
                    TargetType="{x:Type Button}"
                    BasedOn="{x:Null}">

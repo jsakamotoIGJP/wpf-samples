@@ -10,6 +10,7 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igOlap="http://schemas.infragistics.com/olap"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDataChart.Resources"
       xmlns:local="clr-namespace:IGDataChart.Samples.Data"
       xmlns:tools="clr-namespace:Infragistics.Samples.Shared.Tools;assembly=Infragistics.Samples.Shared">
@@ -168,7 +169,12 @@
             <!-- ========================================================================== -->
 
             <ig:AxisLabelSettings x:Key="AxisLabelSettings" Extent="70" />
-            <res:DataChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             
             <Style TargetType="{x:Type ig:Legend}">
                 <Setter Property="Background" Value="{StaticResource LegendBackgroundBrush}"/>

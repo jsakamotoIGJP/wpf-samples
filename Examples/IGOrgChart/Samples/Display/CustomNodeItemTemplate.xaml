@@ -6,13 +6,19 @@
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:model="clr-namespace:IGOrgChart.Model"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGOrgChart.Resources"
     mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="700"
     Title="CustomNodeItemTemplate Page">
 
     <framework:SampleContainer.Resources>
         <ResourceDictionary>    
-            <res:OrgChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OrgChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGOrgChart;component/Assets/Global.xaml" />
                 

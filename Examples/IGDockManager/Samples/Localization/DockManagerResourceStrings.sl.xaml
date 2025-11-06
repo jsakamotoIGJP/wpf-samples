@@ -8,6 +8,7 @@
       Title="Infragistics XAML Control Sample"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDockManager.Resources"
       xmlns:resCom="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared">
 
@@ -16,7 +17,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDockManager;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DockManagerStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DockManagerStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </igFramework:SampleContainer.Resources>
 

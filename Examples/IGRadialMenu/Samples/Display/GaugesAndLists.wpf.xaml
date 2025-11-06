@@ -6,6 +6,7 @@
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGRadialMenu.Resources"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:locConv="clr-namespace:IGRadialMenu.Converters"
@@ -19,7 +20,12 @@
                 <ResourceDictionary Source="/IGRadialMenu;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/IGRadialMenu;component/Assets/Themes.wpf.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:RadialMenuStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:RadialMenuStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <locConv:FontConverter x:Key="FontConverter" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

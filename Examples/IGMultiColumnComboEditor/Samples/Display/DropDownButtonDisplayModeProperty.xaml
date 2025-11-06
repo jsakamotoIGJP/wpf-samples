@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
              xmlns:ig="http://schemas.infragistics.com/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:res="clr-namespace:IGMultiColumnComboEditor.Resources"
              xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
              mc:Ignorable="d" 
@@ -15,7 +16,12 @@
                 <ResourceDictionary Source="/IGMultiColumnComboEditor;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:MultiColumnComboEditorStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:MultiColumnComboEditorStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </igFramework:SampleContainer.Resources>
     

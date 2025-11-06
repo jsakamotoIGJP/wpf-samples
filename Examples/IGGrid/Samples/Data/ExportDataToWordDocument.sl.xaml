@@ -8,6 +8,7 @@
       xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGGrid.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -16,7 +17,12 @@
                 <ResourceDictionary Source="/IGGrid;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamGrid.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:GridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:GridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ig:XamGridWordWriter x:Key="wordWriter" ExportEnded="XamGridWordWriter_ExportEnded"
                                   ExcludeFilters="{Binding ElementName=Chb_ExcFilters, Path=IsChecked}"
                                   ExcludeFixedColumns="{Binding ElementName=Chb_ExcFixedColumns, Path=IsChecked}"

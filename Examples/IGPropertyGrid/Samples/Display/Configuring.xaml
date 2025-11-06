@@ -8,6 +8,7 @@
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:conv="clr-namespace:IGPropertyGrid.Converters"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGPropertyGrid.Resources"
     mc:Ignorable="d"
     d:DesignHeight="500" d:DesignWidth="700"
@@ -19,7 +20,12 @@
                 <ResourceDictionary Source="/IGPropertyGrid;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/IGPropertyGrid;component/Assets/Themes.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:PropertyGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PropertyGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <conv:TypeNameShorteningConverter x:Key="NameConverter" />
             <extConv:VisibilityConverter x:Key="VisConverter" />
         </ResourceDictionary>

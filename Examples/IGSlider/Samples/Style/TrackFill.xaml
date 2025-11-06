@@ -10,11 +10,17 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igDP="http://infragistics.com/DataPresenter"                           
       xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGSlider.Resources">
 
     <framework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:SliderStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SliderStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <converters:FormatConverter x:Key="dateConverter" />
             <SolidColorBrush x:Key="TickBrush" Color="#FF777777"/>
             <DataTemplate x:Key="HorizontalTick">

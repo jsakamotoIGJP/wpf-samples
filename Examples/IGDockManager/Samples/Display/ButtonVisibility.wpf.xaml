@@ -10,6 +10,7 @@
       xmlns:igDock="http://infragistics.com/DockManager"
       xmlns:ipPrim="http://schemas.infragistics.com/xaml/primitives"
       xmlns:locCtls="clr-namespace:IGDockManager.CustomControls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDockManager.Resources">
 
     <framework:SampleContainer.Resources>
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGDockManager;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/IGDockManager;component/CustomControls/Themes/generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DockManagerStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DockManagerStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ipPrim:BoolToVisibilityConverter x:Key="boolToVis" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

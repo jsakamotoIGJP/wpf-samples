@@ -8,6 +8,7 @@
       Title="BulletGraphDataBinding Page"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:ig="http://schemas.infragistics.com/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGBulletGraph.Resources">
 
     <framework:SampleContainer.Resources>
@@ -17,7 +18,12 @@
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamMenu.xaml" />
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamGauge.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:BulletGraphStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BulletGraphStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <LinearGradientBrush x:Key="Range1Bg" EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF85D7F9" />
                 <GradientStop Color="#FF4BB9E5" Offset="1" />

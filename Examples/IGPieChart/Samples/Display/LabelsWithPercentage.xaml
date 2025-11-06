@@ -12,6 +12,7 @@
       xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
       xmlns:converters="clr-namespace:Infragistics.Samples.Shared.Converters;assembly=Infragistics.Samples.Shared"
       xmlns:resources="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPieChart.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -19,7 +20,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGPieChart;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:PieChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PieChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <resources:CommonStrings x:Key="CommonStrings"/>
             <models:FinancialDataCollection x:Key="financialData"/>
             <local:LabelsPositionMode x:Key="LabelsPositionMode_None"

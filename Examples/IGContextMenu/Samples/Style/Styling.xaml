@@ -9,11 +9,17 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:local="clr-namespace:IGContextMenu.Controls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGContextMenu.Resources">
 
     <framework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:MenuStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:MenuStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <LinearGradientBrush x:Key="MenuPopupOuterBorderBrush" StartPoint="0.5,0" EndPoint="0.5,0.1">
                 <LinearGradientBrush.GradientStops>

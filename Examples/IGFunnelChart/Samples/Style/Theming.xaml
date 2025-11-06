@@ -10,6 +10,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:model="clr-namespace:IGFunnelChart.Model"
       xmlns:dataResources="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGFunnelChart.Resources">
 
     <framework:SampleContainer.Resources>
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGFunnelChart;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <model:TestData x:Key="data" />
-            <res:FunnelChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:FunnelChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <dataResources:CommonStrings x:Key="CommonStrings" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

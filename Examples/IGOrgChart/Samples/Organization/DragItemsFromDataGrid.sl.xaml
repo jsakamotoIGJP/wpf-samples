@@ -8,6 +8,7 @@
     xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
     xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGOrgChart.Resources"
     xmlns:model="clr-namespace:IGOrgChart.Samples.Organization"
     xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
@@ -23,7 +24,12 @@
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.DataVisualization.xaml" />
             </ResourceDictionary.MergedDictionaries>
             
-            <res:OrgChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OrgChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <model:SampleEmployeeModel x:Key="EmployeeModel" />
             
             <!--#BEGIN SNIPPET#-->

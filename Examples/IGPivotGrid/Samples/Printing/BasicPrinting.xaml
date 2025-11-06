@@ -6,6 +6,7 @@
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
     xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"  
     xmlns:local="clr-namespace:IGPivotGrid.Samples.Controls"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGPivotGrid.Resources" 
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:igRep="http://infragistics.com/Reporting"
@@ -21,7 +22,12 @@
                 <ResourceDictionary Source="/IGPivotGrid;component/Assets/ReportProgressControlStyle.xaml" /> 
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:PivotGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PivotGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <local:SampleFlatDataSourceSellerVsProduct x:Key="flatDataSource" />
         </ResourceDictionary>
     </igFramework:SampleContainer.Resources>

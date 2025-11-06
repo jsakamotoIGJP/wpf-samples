@@ -5,6 +5,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
                            xmlns:ig="http://schemas.infragistics.com/xaml"                         
+                           xmlns:System="clr-namespace:System;assembly=mscorlib"
                            xmlns:res="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared"
                            xmlns:resCombo="clr-namespace:IGComboEditor.Resources"
                            xmlns:viewModel="clr-namespace:IGComboEditor.Samples.Editing"
@@ -17,7 +18,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
             
-            <res:CommonStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:CommonStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <resCombo:ComboEditorStrings x:Key="ComboStrings" />
             <Style TargetType="TextBlock" BasedOn="{StaticResource BodyStyle}">
                 <Setter Property="Margin" Value="{StaticResource OptionsTextRightMargin}"/>

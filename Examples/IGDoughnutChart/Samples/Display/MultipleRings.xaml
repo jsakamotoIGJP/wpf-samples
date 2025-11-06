@@ -6,6 +6,7 @@
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGDoughnutChart.Resources"
     xmlns:resources="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared" 
     mc:Ignorable="d" 
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGDoughnutChart;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <models:FinancialDataCollection x:Key="financialData"/>
-            <res:DoughnutChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DoughnutChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <resources:CommonLocalizer x:Key="CommonLocalizer"/>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGExcel.Resources"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="700"
@@ -16,7 +17,12 @@
                 <ResourceDictionary Source="/IGExcel;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamTileManager.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:ExcelStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:ExcelStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

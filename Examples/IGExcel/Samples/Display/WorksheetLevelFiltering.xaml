@@ -12,6 +12,7 @@
       xmlns:igDP="http://infragistics.com/DataPresenter"
       xmlns:igExcelExporter="http://infragistics.com/ExcelExporter"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGExcel.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -19,7 +20,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGExcel;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:ExcelStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:ExcelStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <!-- #BEGIN SNIPPET# -->
             <igExcelExporter:DataPresenterExcelExporter x:Key="Exporter" />

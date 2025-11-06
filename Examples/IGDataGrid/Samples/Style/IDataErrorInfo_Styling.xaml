@@ -10,6 +10,7 @@
       xmlns:igDP="http://infragistics.com/DataPresenter"
       xmlns:igEditors="http://infragistics.com/Editors"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDataGrid.Resources"
       xmlns:igThemes="http://infragistics.com/Themes">
 
@@ -18,7 +19,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDataGrid;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DataGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
              <Geometry x:Key="ErrorIcon">M 507 1398 L 507 1392 L 509 1392 L 509 1398 L 507 1398 ZM 507 1402 L 507 1400 L 509 1400 L 509 1402 L 507 1402 ZM 499 1397.5294 C 499 1401.7646 503.2354 1406 508.5294 1406 C 512.7646 1406 517 1401.7646 517 1397.5294 C 517 1392.2354 512.7646 1388 508.5294 1388 C 503.2354 1388 499 1392.2354 499 1397.5294 Z</Geometry>
             
         </ResourceDictionary>

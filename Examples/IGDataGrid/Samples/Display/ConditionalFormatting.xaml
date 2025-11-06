@@ -9,6 +9,7 @@
       xmlns:igDP="http://infragistics.com/DataPresenter"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:localConv="clr-namespace:IGDataGrid.Converters"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDataGrid.Resources"
       xmlns:igThemes="http://infragistics.com/Themes">
 
@@ -22,7 +23,12 @@
             <localConv:PassingToColorConverter x:Key="passingToColorConverter" />
             <XmlDataProvider x:Key="QuarterbackData" />
 
-            <res:DataGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </igFramework:SampleContainer.Resources>
 

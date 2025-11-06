@@ -9,6 +9,7 @@
     xmlns:local="clr-namespace:IGDataGrid.Samples.Display"
     xmlns:igDP="http://infragistics.com/DataPresenter"
     xmlns:igED="http://infragistics.com/Editors"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGDataGrid.Resources"
     xmlns:viewModels="clr-namespace:IGDataGrid.Samples.ViewModel"
     mc:Ignorable="d" 
@@ -20,7 +21,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDataGrid;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DataGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             
             <!-- #BEGIN SNIPPET# -->
             <local:CustomDisplayTemplateSelector x:Key="customDisplaySelector" />

@@ -6,12 +6,18 @@
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
     xmlns:igEditors="http://infragistics.com/Editors"
     xmlns:igThemes="http://infragistics.com/Themes"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGEditors.Resources"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
 	Title="Theming">
 	
     <framework:SampleContainer.Resources>
-        <res:EditorsStringRes x:Key="Strings" />
+        <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="res:EditorsStringRes" />
+                <System:Boolean>True</System:Boolean>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
 		
         <Style TargetType="{x:Type DockPanel}" x:Key="editorPanel">
 			<Setter Property="HorizontalAlignment" Value="Left" />

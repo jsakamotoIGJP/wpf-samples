@@ -11,6 +11,7 @@
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
       xmlns:providers="clr-namespace:Infragistics.Samples.Shared.DataProviders;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGGrid.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -22,7 +23,12 @@
 
             <providers:ProductCategoryProvider x:Key="categoryProvider"/>
             <converters:ProductCategoryConverter x:Key="categoryConverter" />
-            <res:GridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:GridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style x:Key="AddRowStyling" TargetType="igPrim:AddNewRowCellControl">
                 <Setter Property="FontSize" Value="11" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />

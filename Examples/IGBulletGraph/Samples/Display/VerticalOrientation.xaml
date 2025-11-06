@@ -10,6 +10,7 @@
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
     xmlns:converters="clr-namespace:Infragistics.Samples.Shared.Converters;assembly=Infragistics.Samples.Shared"
     xmlns:resources="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGBulletGraph.Resources" >
     <framework:SampleContainer.Resources>
         <ResourceDictionary>
@@ -17,7 +18,12 @@
                 <ResourceDictionary Source="/IGBulletGraph;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:BulletGraphStrings x:Key="Strings" />  
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BulletGraphStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>  
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
     <Grid x:Name="LayoutRoot" Background="White" >

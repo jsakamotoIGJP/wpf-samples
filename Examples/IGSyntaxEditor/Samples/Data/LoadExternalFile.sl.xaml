@@ -9,6 +9,7 @@
       xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:ig="http://schemas.infragistics.com/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGSyntaxEditor.Resources">
 
     <framework:SampleContainer.Resources>
@@ -17,7 +18,12 @@
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamSyntaxEditor.xaml" />
                 <ResourceDictionary Source="/IGSyntaxEditor;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:SyntaxEditorStrings x:Key="Strings" />		
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SyntaxEditorStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>		
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

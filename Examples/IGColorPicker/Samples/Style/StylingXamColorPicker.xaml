@@ -18,7 +18,12 @@
                 <ResourceDictionary Source="/IGColorPicker;component/Assets/Global.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:ColorPickerStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:ColorPickerStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
             <LinearGradientBrush x:Key="PopupBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
                 <LinearGradientBrush.GradientStops>

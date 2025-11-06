@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ig="http://schemas.infragistics.com/xaml"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGExcel.Resources"
     Title="NewColorModel Page">
     
@@ -11,7 +12,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGExcel;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:ExcelStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:ExcelStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style TargetType="TextBlock" BasedOn="{StaticResource OptionsPanelTextStyle}">
                 <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
             </Style>

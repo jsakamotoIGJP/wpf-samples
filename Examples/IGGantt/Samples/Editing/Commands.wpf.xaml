@@ -7,6 +7,7 @@
     xmlns:igRibbon="http://infragistics.com/Ribbon"
     xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"   
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGGantt.Resources"
     xmlns:converters="clr-namespace:IGGantt.Samples.Converters"
     xmlns:viewmodel="clr-namespace:IGGantt.Samples.ViewModel"
@@ -21,7 +22,12 @@
                 <ResourceDictionary Source="/IGGantt;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <res:GanttStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:GanttStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <converters:InverseBooleanConverter x:Key="inverseBool" />
             <viewmodel:ProjectViewModel x:Key="viewmodel" />
         </ResourceDictionary>

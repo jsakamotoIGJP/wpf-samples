@@ -18,7 +18,12 @@
                 <ResourceDictionary Source="/IGBarcode;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:BarcodeStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:BarcodeStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

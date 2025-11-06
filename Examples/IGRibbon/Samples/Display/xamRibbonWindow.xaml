@@ -19,7 +19,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGRibbon;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:RibbonStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:RibbonStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </igRibbon:XamRibbonWindow.Resources>
     <!-- #BEGIN SNIPPET# -->

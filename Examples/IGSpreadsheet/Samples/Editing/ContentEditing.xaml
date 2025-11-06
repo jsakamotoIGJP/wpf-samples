@@ -9,6 +9,7 @@
     xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
     xmlns:igRibbon="http://infragistics.com/Ribbon"
     xmlns:igEditors="http://infragistics.com/Editors"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGSpreadsheet.Resources"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:conv="clr-namespace:IGSpreadsheet.Converters"
@@ -22,7 +23,12 @@
                 <ResourceDictionary Source="/IGSpreadsheet;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:SpreadsheetStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SpreadsheetStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <conv:ContentEditingConverter x:Key="CEConv" />
             <conv:AlignmentConv x:Key="AlignConverter" />
             <conv:TwipsConverter x:Key="TwipsConv" />

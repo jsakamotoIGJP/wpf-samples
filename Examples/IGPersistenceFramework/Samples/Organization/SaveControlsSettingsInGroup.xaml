@@ -8,6 +8,7 @@
       Title="SaveControlsSettingsInGroup Page"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:ig="http://schemas.infragistics.com/xaml"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPersistenceFramework.Resources">
 
     <framework:SampleContainer.Resources>
@@ -16,7 +17,12 @@
                 <ResourceDictionary Source="/IGPersistenceFramework;component/Assets/Global.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:PersistenceStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PersistenceStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ig:PersistenceGroup x:Key="igPG" />
             <Geometry x:Key="TVIcon">M 1068.5002 609.0011 C 1061.0938 609.0011 1060 608.927 1060 602.0052 C 1060 595.0859 1061.0938 595.0098 1068.5002 595.0098 C 1075.9452 595.0098 1076.9999 595.0313 1076.9999 602.0052 C 1076.9999 608.9816 1075.8719 609.0011 1068.5002 609.0011 ZM 1080.5 601.0721 C 1079.6338 601.0721 1078.9344 600.3733 1078.9344 599.5071 C 1078.9344 598.6424 1079.6338 597.9417 1080.5 597.9417 C 1081.3662 597.9417 1082.0664 598.6424 1082.0664 599.5071 C 1082.0664 600.3733 1081.3662 601.0721 1080.5 601.0721 ZM 1080.5 605.0698 C 1079.6338 605.0698 1078.9344 604.371 1078.9344 603.5043 C 1078.9344 602.6396 1079.6338 601.9388 1080.5 601.9388 C 1081.3662 601.9388 1082.0664 602.6396 1082.0664 603.5043 C 1082.0664 604.371 1081.3662 605.0698 1080.5 605.0698 ZM 1066.2933 589.7205 L 1069.585 593.01 L 1061 593.0109 C 1059.3428 593.0109 1058 594.3539 1058 596.0092 L 1058 608.0017 C 1058 609.657 1059.3428 611 1061 611 L 1081 611 C 1082.6572 611 1084 609.657 1084 608.0017 L 1084 596.0092 C 1084 594.3539 1082.6572 593.0109 1081 593.0109 L 1072.4149 593.01 L 1078.7068 586.7222 L 1077.293 585.3077 L 1071 591.595 L 1067.7072 588.3058 L 1066.2933 589.7205 Z</Geometry>
         </ResourceDictionary>

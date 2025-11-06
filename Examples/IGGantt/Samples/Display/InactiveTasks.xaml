@@ -9,6 +9,7 @@
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
     xmlns:converters="clr-namespace:IGGantt.Samples.Converters"
     xmlns:viewmodel="clr-namespace:IGGantt.Samples.ViewModel"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGGantt.Resources"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="700"
@@ -21,7 +22,12 @@
                 <ResourceDictionary Source="/IGGantt;component/Assets/Global.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-            <res:GanttStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:GanttStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <converters:InverseBooleanConverter x:Key="inverseBool" />
             <viewmodel:ProjectViewModel x:Key="viewmodel" />
         </ResourceDictionary>

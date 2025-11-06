@@ -7,6 +7,7 @@
     xmlns:igDP="http://infragistics.com/DataPresenter"                           
     xmlns:igRibbon="http://infragistics.com/Ribbon"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGUndoRedoFramework.Resources"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="700"
@@ -20,7 +21,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
             <!-- Localization -->
-            <res:UndoRedoStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:UndoRedoStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

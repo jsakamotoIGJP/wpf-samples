@@ -11,11 +11,17 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:mscontrols="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGSlider.Resources">
 
     <framework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:SliderStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SliderStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <converters:FormatConverter x:Key="dateConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGSlider;component/Assets/Global.xaml" />

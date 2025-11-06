@@ -7,6 +7,7 @@
     xmlns:igEdit="http://infragistics.com/Editors"
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGGantt.Resources"
     xmlns:viewModel="clr-namespace:IGGantt.Samples.ViewModel"
     mc:Ignorable="d" 
@@ -20,7 +21,12 @@
                 <ResourceDictionary Source="/IGGantt;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <res:GanttStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:GanttStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
 
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

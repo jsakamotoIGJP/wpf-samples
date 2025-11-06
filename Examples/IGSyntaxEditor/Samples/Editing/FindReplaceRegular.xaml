@@ -18,7 +18,12 @@
                 
                 <ResourceDictionary Source="/IGSyntaxEditor;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:SyntaxEditorStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:SyntaxEditorStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

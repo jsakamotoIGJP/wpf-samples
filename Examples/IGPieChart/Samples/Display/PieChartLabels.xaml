@@ -9,6 +9,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPieChart.Resources"
       xmlns:resources="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared">
 
@@ -17,7 +18,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGPieChart;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:PieChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PieChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <resources:CommonStrings x:Key="CommonStrings"/>
             <models:FinancialDataCollection x:Key="financialData"/>
             <Style x:Key="OptionPanelLabels" TargetType="TextBlock">

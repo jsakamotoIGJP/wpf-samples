@@ -8,6 +8,7 @@
       Title="Commands"
       xmlns:igEditors="http://infragistics.com/Editors"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGMonthCalendar.Resources">
 
     <igFramework:SampleContainer.Resources>
@@ -15,7 +16,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGMonthCalendar;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:MonthCalendarStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:MonthCalendarStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <Style TargetType="{x:Type Button}"
                    BasedOn="{StaticResource IGGenericButton}">
                 <Setter Property="Margin"

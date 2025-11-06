@@ -10,6 +10,7 @@
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igOlap="http://schemas.infragistics.com/olap"
       xmlns:local="clr-namespace:IGPivotGrid.Samples.Controls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPivotGrid.Resources"
       xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -19,7 +20,12 @@
                 <ResourceDictionary Source="/IGPivotGrid;component/Assets/Global.xaml" />
                 
             </ResourceDictionary.MergedDictionaries>
-            <res:PivotGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PivotGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <igOlap:FlatDataSource x:Key="DataSource" />
             <!-- Load time is often very short, so give the user a moment to read the message -->
             <Storyboard x:Key="hideMessages">

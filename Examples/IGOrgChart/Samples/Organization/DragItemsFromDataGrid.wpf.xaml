@@ -7,6 +7,7 @@
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:models="clr-namespace:Infragistics.Samples.Shared.Models;assembly=Infragistics.Samples.Shared"
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGOrgChart.Resources"
     xmlns:model="clr-namespace:IGOrgChart.Samples.Organization"
     xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
@@ -22,7 +23,12 @@
                 
             </ResourceDictionary.MergedDictionaries>  
             
-            <res:OrgChartStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:OrgChartStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <model:SampleEmployeeModel x:Key="EmployeeModel" />
 
             <SolidColorBrush x:Key="CellRowHoverBackgroundBrush" Color="#FF7446B9"/>

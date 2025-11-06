@@ -9,11 +9,17 @@
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
       xmlns:igDock="http://infragistics.com/DockManager"
       xmlns:locCtls="clr-namespace:IGDockManager.CustomControls"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGDockManager.Resources">
 
     <framework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:DockManagerStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DockManagerStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDockManager;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/IGDockManager;component/CustomControls/themes/generic.xaml" />

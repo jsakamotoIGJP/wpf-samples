@@ -8,6 +8,7 @@
       Title="PersistStandardControl Page"
       xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
       xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGPersistenceFramework.Resources">
 
     <framework:SampleContainer.Resources>
@@ -15,7 +16,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGPersistenceFramework;component/Assets/Global.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <res:PersistenceStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PersistenceStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
 

@@ -7,6 +7,7 @@
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Framework"
     xmlns:local="clr-namespace:IGRibbon.Model"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGRibbon.Resources"
     mc:Ignorable="d" 
     d:DesignHeight="500" d:DesignWidth="700"
@@ -18,7 +19,12 @@
                 <ResourceDictionary Source="/IGRibbon;component/Assets/Global.xaml" />
                 <ResourceDictionary Source="/Infragistics.Themes.IGTheme;component/IG.xamRibbonSB.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:RibbonStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:RibbonStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <local:ViewModel x:Key="vm" />
         </ResourceDictionary>
     </framework:SampleContainer.Resources>

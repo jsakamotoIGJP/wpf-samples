@@ -6,11 +6,17 @@
       mc:Ignorable="d"
       xmlns:ig="http://schemas.infragistics.com/xaml"
       xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:res="clr-namespace:IGTimeline.Resources">
 
     <igFramework:SampleContainer.Resources>
         <ResourceDictionary>
-            <res:TimelineStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:TimelineStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGTimeline;component/Assets/Global.xaml" />
                 

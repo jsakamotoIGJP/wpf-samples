@@ -6,6 +6,7 @@
              xmlns:ig="http://schemas.infragistics.com/xaml"
              xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
              xmlns:igDP="http://infragistics.com/DataPresenter"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:res="clr-namespace:IGPropertyGrid.Resources"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -16,7 +17,12 @@
                 <ResourceDictionary Source="/Infragistics.Samples.Shared;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <igPrim:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-            <res:PropertyGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:PropertyGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </UserControl.Resources>
     

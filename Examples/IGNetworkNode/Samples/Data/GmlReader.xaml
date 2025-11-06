@@ -7,6 +7,7 @@
     xmlns:framework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared" 
     xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared" 
     xmlns:common="clr-namespace:Infragistics.Samples.Shared.Resources;assembly=Infragistics.Samples.Shared" 
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:res="clr-namespace:IGNetworkNode.Resources" 
     mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="700">
 
@@ -19,7 +20,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
             <common:CommonStrings x:Key="CommonStrings" />
-            <res:NetworkNodeStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:NetworkNodeStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </framework:SampleContainer.Resources>
     <!-- ========================================================================== -->

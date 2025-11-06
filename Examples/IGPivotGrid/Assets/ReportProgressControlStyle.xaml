@@ -1,9 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:igRep="http://infragistics.com/Reporting"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
                     xmlns:res="clr-namespace:IGPivotGrid.Resources">
     
-    <res:PivotGridStrings x:Key="Strings" />
+    <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="res:PivotGridStrings" />
+            <System:Boolean>True</System:Boolean>
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
     
     <Style TargetType="{x:Type igRep:ReportProgressControl}">
         <Setter Property="Template">

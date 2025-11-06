@@ -18,7 +18,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/IGDataGrid;component/Assets/Global.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <res:DataGridStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:DataGridStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             <ObjectDataProvider x:Key="AllowRecordFixingValues"
                                 MethodName="GetValues"
                                 ObjectType="{x:Type System:Enum}">

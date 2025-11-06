@@ -7,6 +7,7 @@
                              mc:Ignorable="d"
                              xmlns:controls="clr-namespace:Infragistics.Samples.Shared.Controls;assembly=Infragistics.Samples.Shared"
                              xmlns:igFramework="clr-namespace:Infragistics.Samples.Framework;assembly=Infragistics.Samples.Shared"
+                             xmlns:System="clr-namespace:System;assembly=mscorlib"
                              xmlns:res="clr-namespace:IGCarouselPanel.Resources">
     <igFramework:SampleContainer.Resources>
         <ResourceDictionary>
@@ -15,7 +16,12 @@
                 
             </ResourceDictionary.MergedDictionaries>
 
-            <res:CarouselPanelStrings x:Key="Strings" />
+            <ObjectDataProvider x:Key="Strings" ObjectType="{x:Type System:Activator}" MethodName="CreateInstance">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="res:CarouselPanelStrings" />
+                    <System:Boolean>True</System:Boolean>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
             
             <Style x:Key="btnNavPrev"
                BasedOn="{x:Null}"
